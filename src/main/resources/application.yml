@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    database: postgresql
+
+
+openai:
+  secret-key: ${OPEN_AI_SECRET_KEY}
+  url:
+    prompt: ${OPEN_AI_PROMPT_URL}
+
+jwt:
+  access-token:
+    secret-key: ${JWT_SECRET}
+    expiration: ${JWT_EXP}
+    issuer: ${JWT_ISSUER}
