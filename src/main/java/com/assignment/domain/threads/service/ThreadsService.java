@@ -1,15 +1,15 @@
 package com.assignment.domain.threads.service;
 
-import com.assignment.domain.chat.domain.Chat;
 import com.assignment.domain.chat.repository.ChatRepository;
 import com.assignment.domain.feedback.repository.ChatFeedBackRepository;
 import com.assignment.domain.threads.domain.Threads;
 import com.assignment.domain.threads.repository.ThreadsRepository;
+import com.assignment.global.exception.BusinessException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import static com.assignment.global.exception.ThreadsErrorCode.THREAD_NOT_FOUND;
 
 @Service
 @Transactional
@@ -21,7 +21,7 @@ public class ThreadsService {
 
     public void deleteByThreadId(Long threadId) {
         Threads thread = threadsRepository.findById(threadId)
-                        .orElseThrow(() -> new RuntimeException("Thread not found"));
+                        .orElseThrow(() -> new BusinessException(THREAD_NOT_FOUND));
 
         chatRepository.deleteAllByThreadId(threadId);
         threadsRepository.deleteById(threadId);

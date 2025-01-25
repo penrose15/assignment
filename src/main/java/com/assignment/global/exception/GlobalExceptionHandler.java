@@ -74,8 +74,8 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @ExceptionHandler(BaseException.class)
-    protected ResponseEntity<?> handleBaseException(BaseException e) {
+    @ExceptionHandler(BusinessException.class)
+    protected ResponseEntity<?> handleBaseException(BusinessException e) {
         log.error("business exception",e);
         ErrorResponse errorResponse = ErrorResponse.of(e.getErrorType());
 

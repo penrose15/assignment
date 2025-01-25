@@ -1,6 +1,5 @@
 package com.assignment.global.dto;
 
-import com.assignment.global.exception.BaseException;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,12 +22,5 @@ public class ApiResponse<T> {
 
     public static <T> ApiResponse<T> success(String code, T data) {
         return new ApiResponse<>(200, code, data, "success");
-    }
-
-    public static <T> ApiResponse<T> failed(BaseException e) {
-        return new ApiResponse<>(e.getStatus().value(),
-                e.getErrorType().getCode(),
-                null,
-                e.getErrorType().getMessage());
     }
 }
