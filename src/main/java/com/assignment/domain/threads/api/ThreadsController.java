@@ -16,7 +16,7 @@ public class ThreadsController {
 
     @DeleteMapping("/{thread-id}")
     public void delete(@LoginUser String userId,
-                       @PathVariable Long threadId) {
+                       @PathVariable(value = "thread-id") Long threadId) {
         threadsService.deleteByThreadId(threadId);
     }
 }

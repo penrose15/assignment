@@ -1,14 +1,16 @@
 package com.assignment.global.exception;
 
-public class BusinessException extends RuntimeException{
-    private final ErrorType errorType;
+import com.assignment.global.exception.errortype.ErrorCode;
 
-    public BusinessException(ErrorType errorType) {
-        super(errorType.getMessage());
-        this.errorType = errorType;
+public class BusinessException extends RuntimeException{
+    private final ErrorCode errorCode;
+
+    public BusinessException(ErrorCode errorCode) {
+        super(errorCode.getMessage());
+        this.errorCode = errorCode;
     }
 
-    public ErrorType getErrorType() {
-        return errorType;
+    public ErrorCode getErrorType() {
+        return errorCode;
     }
 }

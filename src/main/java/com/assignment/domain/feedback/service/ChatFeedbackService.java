@@ -9,6 +9,7 @@ import com.assignment.domain.feedback.repository.ChatFeedBackRepository;
 import com.assignment.domain.users.domain.Users;
 import com.assignment.domain.users.repository.UsersRepository;
 import com.assignment.global.dto.PageResponse;
+import com.assignment.global.exception.BusinessException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -18,6 +19,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
+
+import static com.assignment.global.exception.errortype.ChatErrorCode.CHAT_NOT_FOUND;
+import static com.assignment.global.exception.errortype.ChatFeedbackErrorCode.CHAT_FEEDBACK_ALREADY_EXIST;
+import static com.assignment.global.exception.errortype.UserErrorCode.USER_NOT_FOUND;
 
 @Service
 @Transactional
@@ -29,12 +34,12 @@ public class ChatFeedbackService {
 
     public void createChatFeedback(String userId, String chatId, ChatFeedbackRequest request) {
         Users users = usersRepository.findById(userId)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+                .orElseThrow(() -> new BusinessException(USER_NOT_FOUND));
         Chat chat = chatRepository.findById(chatId)
-                .orElseThrow(() -> new RuntimeException("Chat not found"));
+                .orElseThrow(() -> new BusinessException(CHAT_NOT_FOUND));
         Optional<ChatFeedback> chatFeedback = chatFeedBackRepository.findByChatIdAndUserId(chatId, userId);
         if (chatFeedback.isPresent()) {
-            throw new RuntimeException("Chat feedback already exists");
+            throw new BusinessException(CHAT_FEEDBACK_ALREADY_EXIST);
         }
 
         chatFeedBackRepository.save(ChatFeedback.builder()

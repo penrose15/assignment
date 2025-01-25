@@ -1,5 +1,6 @@
 package com.assignment.global.exception;
 
+import com.assignment.global.exception.errortype.GlobalErrorCode;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

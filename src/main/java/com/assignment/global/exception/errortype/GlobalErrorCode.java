@@ -1,6 +1,6 @@
-package com.assignment.global.exception;
+package com.assignment.global.exception.errortype;
 
-public enum GlobalErrorCode implements ErrorType{
+public enum GlobalErrorCode implements ErrorCode {
     INVALID_REQUEST(400, "G001", "handle Validation Exception"),
     HEADER_NOT_FOUND(400, "G002", "header not found"),
     IO_EXCEPTION(500, "G003", "io Exception"),

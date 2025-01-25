@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import static com.assignment.global.exception.ThreadsErrorCode.THREAD_NOT_FOUND;
+import static com.assignment.global.exception.errortype.ThreadsErrorCode.THREAD_NOT_FOUND;
 
 @Service
 @Transactional

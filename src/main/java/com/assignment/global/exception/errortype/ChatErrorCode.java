@@ -1,14 +1,14 @@
-package com.assignment.global.exception;
+package com.assignment.global.exception.errortype;
 
-public enum ThreadsErrorCode implements ErrorType{
-    THREAD_NOT_FOUND(404, "T001", "thread not found")
+public enum ChatErrorCode implements ErrorCode {
+    CHAT_NOT_FOUND(404, "C001", "chat not found")
     ;
 
     private final int status;
     private final String code;
     private final String message;
 
-    ThreadsErrorCode(int status, String code, String message) {
+    ChatErrorCode(int status, String code, String message) {
         this.status = status;
         this.code = code;
         this.message = message;

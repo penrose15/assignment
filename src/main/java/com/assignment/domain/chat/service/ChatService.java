@@ -10,6 +10,7 @@ import com.assignment.domain.users.domain.Users;
 import com.assignment.domain.users.repository.UsersRepository;
 import com.assignment.global.ai.ChatCompletions;
 import com.assignment.global.dto.PageResponse;
+import com.assignment.global.exception.BusinessException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -20,6 +21,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
+
+import static com.assignment.global.exception.errortype.UserErrorCode.USER_NOT_FOUND;
 
 @Service
 @Transactional
@@ -32,7 +35,7 @@ public class ChatService {
 
     public ChatResponse createChat(String userId, ChatQuestionRequest request) {
         Users user = usersRepository.findById(userId)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+                .orElseThrow(() -> new BusinessException(USER_NOT_FOUND));
         Optional<Chat> optionalChat = chatRepository.findByUsersIdOrderByCreatedAtDesc(user.getId());
 
         Threads thread = getThreads(optionalChat, user);
@@ -66,7 +69,7 @@ public class ChatService {
 
     public PageResponse<ChatResponse> findChatPage(String userId, int page, int size, boolean isDesc) {
         Users user = usersRepository.findById(userId)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+                .orElseThrow(() -> new BusinessException(USER_NOT_FOUND));
         Page<Chat> chatPage;
         if(isDesc) {
             Pageable pageable = PageRequest.of(page, size, Sort.Direction.DESC, "createdAt");

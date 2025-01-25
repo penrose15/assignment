@@ -1,10 +1,9 @@
 package com.assignment.global.exception;
 
+import com.assignment.global.exception.errortype.ErrorCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,16 +21,16 @@ public class ErrorResponse {
         this.resultMessage = resultMessage;
     }
 
-    public static ErrorResponse of(ErrorType errorType, BindingResult bindingResult) {
-        return new ErrorResponse(errorType.getCode(), FieldError.of(bindingResult), errorType.getMessage());
+    public static ErrorResponse of(ErrorCode errorCode, BindingResult bindingResult) {
+        return new ErrorResponse(errorCode.getCode(), FieldError.of(bindingResult), errorCode.getMessage());
     }
 
-    public static ErrorResponse of(ErrorType errorType, String message) {
-        return new ErrorResponse(errorType.getCode(), null, message);
+    public static ErrorResponse of(ErrorCode errorCode, String message) {
+        return new ErrorResponse(errorCode.getCode(), null, message);
     }
 
-    public static ErrorResponse of(ErrorType errorType) {
-        return new ErrorResponse(errorType.getCode(), null, errorType.getMessage());
+    public static ErrorResponse of(ErrorCode errorCode) {
+        return new ErrorResponse(errorCode.getCode(), null, errorCode.getMessage());
     }
 
     @Getter
