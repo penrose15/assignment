@@ -22,12 +22,7 @@ public class ThreadsService {
     public void deleteByThreadId(Long threadId) {
         Threads thread = threadsRepository.findById(threadId)
                         .orElseThrow(() -> new RuntimeException("Thread not found"));
-        List<String> chatIds = chatRepository.findAllByThreadId(threadId)
-                        .stream()
-                                .map(Chat::getId)
-                                        .toList();
 
-        chatFeedBackRepository.deleteAllByChatIds(chatIds);
         chatRepository.deleteAllByThreadId(threadId);
         threadsRepository.deleteById(threadId);
     }

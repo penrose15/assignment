@@ -38,8 +38,4 @@ public interface ChatFeedBackRepository extends JpaRepository<ChatFeedback, Long
             "WHERE (:goodOrBad IS NULL OR cf.goodOrBad = :goodOrBad)" +
             "order by cf.createdAt")
     Page<ChatFeedback> findAllOrderByCreatedAt(Boolean goodOrBad,Pageable pageable);
-
-    @Modifying
-    @Query("delete from ChatFeedback cf where cf.chat.id in :chatIds")
-    void deleteAllByChatIds(List<String> chatIds);
 }

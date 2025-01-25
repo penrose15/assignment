@@ -26,7 +26,7 @@ public class ChatFeedback {
     private Users users;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "chat_id")
+    @JoinColumn(name = "chat_id", foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
     private Chat chat;
 
     private boolean goodOrBad;
