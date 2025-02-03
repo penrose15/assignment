@@ -14,16 +14,18 @@ import static com.assignment.global.exception.errortype.GlobalErrorCode.IO_EXCEP
 @Slf4j
 @Repository
 public class SseEmitterRepository {
-    private static final Long TIMEOUT = 30 * 1000L;
+    private static final Long TIMEOUT = 20 * 1000L;
     private final Map<String, SseEmitter> sseEmitters = new ConcurrentHashMap<>(); // sseEmitter 객체 저장용
 
     public SseEmitter subscribe(String id) {
         SseEmitter emitter = new SseEmitter(TIMEOUT);
         sseEmitters.put(id, emitter);
         emitter.onCompletion(() -> {
+            log.info("onCompletion callback");
             sseEmitters.remove(id);
         });
         emitter.onTimeout(() -> {
+            log.info("onTimeout callback");
             sseEmitters.remove(id);
             emitter.complete();
         });

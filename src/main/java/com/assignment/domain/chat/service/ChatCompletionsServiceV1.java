@@ -1,8 +1,8 @@
-package com.assignment.global.ai;
+package com.assignment.domain.chat.service;
 
-import com.assignment.global.ai.constant.ChatCompletionsRole;
-import com.assignment.global.ai.dto.ChatCompletionsRequest;
-import com.assignment.global.ai.dto.OpenAiRequest;
+import com.assignment.domain.chat.constant.ChatCompletionsRole;
+import com.assignment.domain.chat.dto.chatcompletions.ChatCompletionsRequest;
+import com.assignment.domain.chat.dto.chatcompletions.OpenAiRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
@@ -16,7 +16,7 @@ import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
-public class ChatCompletions {
+public class ChatCompletionsServiceV1 {
     private final RestTemplate restTemplate;
     private final HttpHeaders headers;
 

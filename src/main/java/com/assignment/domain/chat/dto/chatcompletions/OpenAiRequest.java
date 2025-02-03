@@ -1,6 +1,6 @@
-package com.assignment.global.ai.dto;
+package com.assignment.domain.chat.dto.chatcompletions;
 
-import com.assignment.global.ai.constant.OpenAiModel;
+import com.assignment.domain.chat.constant.OpenAiModel;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;

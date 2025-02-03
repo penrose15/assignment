@@ -1,12 +1,12 @@
-package com.assignment.global.ai;
+package com.assignment.domain.chat.service;
 
 import com.assignment.domain.chat.domain.Chat;
 import com.assignment.domain.chat.repository.ChatRepository;
-import com.assignment.global.ai.constant.ChatCompletionsRole;
-import com.assignment.global.ai.dto.ChatCompletionsRequest;
-import com.assignment.global.ai.dto.ChatCompletionsResponse;
-import com.assignment.global.ai.dto.ChatMessage;
-import com.assignment.global.ai.dto.OpenAiRequest;
+import com.assignment.domain.chat.constant.ChatCompletionsRole;
+import com.assignment.domain.chat.dto.chatcompletions.ChatCompletionsRequest;
+import com.assignment.domain.chat.dto.chatcompletions.ChatCompletionsResponse;
+import com.assignment.domain.chat.dto.chatcompletions.ChatMessage;
+import com.assignment.domain.chat.dto.chatcompletions.OpenAiRequest;
 import com.assignment.global.sse.SseEmitterRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -25,7 +25,7 @@ import java.util.List;
 @Slf4j
 @Component
 @RequiredArgsConstructor
-public class ChatCompletions3 {
+public class ChatCompletionsServiceV2 {
     private final WebClient webClient;
     private final ChatRepository chatRepository;
     private final SseEmitterRepository sseEmitterRepository;

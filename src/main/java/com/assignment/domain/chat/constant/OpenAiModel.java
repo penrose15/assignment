@@ -1,4 +1,4 @@
-package com.assignment.global.ai.constant;
+package com.assignment.domain.chat.constant;
 
 import lombok.Getter;
 

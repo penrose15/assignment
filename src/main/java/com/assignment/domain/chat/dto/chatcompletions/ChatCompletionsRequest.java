@@ -1,7 +1,7 @@
-package com.assignment.global.ai.dto;
+package com.assignment.domain.chat.dto.chatcompletions;
 
-import com.assignment.global.ai.constant.ChatCompletionsPrompt;
-import com.assignment.global.ai.constant.ChatCompletionsRole;
+import com.assignment.domain.chat.constant.ChatCompletionsPrompt;
+import com.assignment.domain.chat.constant.ChatCompletionsRole;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package com.assignment.global.ai.dto;
+package com.assignment.domain.chat.dto.chatcompletions;
 
 import java.util.List;
 

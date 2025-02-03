@@ -32,17 +32,7 @@ public class ChatController {
         return ResponseEntity.ok(response);
     }
 
-    @PostMapping(value = "/v1/sse")
-    public ResponseEntity<?> createChat2(
-            @LoginUser String userId,
-            @RequestBody ChatQuestionRequest request) {
-
-        ChatResponse res = chatService.createChat2(userId, request);
-
-        return ResponseEntity.ok(res);
-    }
-
-    @PostMapping(value = "/v2/sse", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    @PostMapping(value = "/v1/sse", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public ResponseEntity<SseEmitter> createChat3(
             @LoginUser String userId,
             @RequestBody ChatQuestionRequest request) {
