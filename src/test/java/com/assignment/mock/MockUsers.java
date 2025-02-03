@@ -17,7 +17,7 @@ public class MockUsers {
 
     public static List<Users> makeUsers(int cnt) {
         List<Users> users = new ArrayList<>();
-        for (int i = 0; i<cnt; i++) {
+        for (int i = 0; i < cnt; i++) {
             users.add(Users.builder()
                     .email(i + "test@gmail.com")
                     .password("password" + i)

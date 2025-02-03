@@ -1,8 +1,7 @@
 package com.assignment.global.exception.errortype;
 
 public enum ChatErrorCode implements ErrorCode {
-    CHAT_NOT_FOUND(404, "C001", "chat not found")
-    ;
+    CHAT_NOT_FOUND(404, "C001", "chat not found");
 
     private final int status;
     private final String code;

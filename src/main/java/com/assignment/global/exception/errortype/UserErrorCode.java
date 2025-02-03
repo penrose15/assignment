@@ -3,8 +3,7 @@ package com.assignment.global.exception.errortype;
 public enum UserErrorCode implements ErrorCode {
     USER_NOT_FOUND(404, "U001", "user not found"),
     USER_ALREADY_EXIST(400, "U002", "user already exist"),
-    CANNOT_LOGIN(403, "U003", "cannot login")
-    ;
+    CANNOT_LOGIN(403, "U003", "cannot login");
 
     private final int status;
     private final String code;

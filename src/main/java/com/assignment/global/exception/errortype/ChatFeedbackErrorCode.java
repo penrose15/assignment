@@ -1,8 +1,7 @@
 package com.assignment.global.exception.errortype;
 
-public enum ChatFeedbackErrorCode implements ErrorCode{
-    CHAT_FEEDBACK_ALREADY_EXIST(400, "CF001", "Chat feedback already exists")
-    ;
+public enum ChatFeedbackErrorCode implements ErrorCode {
+    CHAT_FEEDBACK_ALREADY_EXIST(400, "CF001", "Chat feedback already exists");
 
     private final int status;
     private final String code;

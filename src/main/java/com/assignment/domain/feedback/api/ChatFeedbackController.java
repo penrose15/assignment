@@ -28,7 +28,7 @@ public class ChatFeedbackController {
                                          @RequestParam int size,
                                          @RequestParam(name = "is-desc", defaultValue = "true") boolean isDesc,
                                          @RequestParam(name = "good-or-bad", required = false) Boolean goodOrBad) {
-        PageResponse<ChatFeedbackResponse> responses = chatFeedbackService.getChatFeedback(userId, page-1, size, isDesc, goodOrBad);
+        PageResponse<ChatFeedbackResponse> responses = chatFeedbackService.getChatFeedback(userId, page - 1, size, isDesc, goodOrBad);
 
         return ResponseEntity.ok(responses);
     }

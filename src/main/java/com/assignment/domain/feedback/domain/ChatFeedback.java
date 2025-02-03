@@ -47,7 +47,7 @@ public class ChatFeedback {
     }
 
     public void updateStatus() {
-        if(this.status.equals("PENDING")) {
+        if (this.status.equals("PENDING")) {
             this.status = "RESOLVED";
         }
     }

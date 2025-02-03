@@ -39,11 +39,17 @@ public class ErrorResponse {
         private final String value;
         private final String reason;
 
+        private FieldError(String field, String value, String reason) {
+            this.field = field;
+            this.value = value;
+            this.reason = reason;
+        }
+
         public static List<FieldError> of(BindingResult bindingResult) {
             List<org.springframework.validation.FieldError> fieldErrors = bindingResult.getFieldErrors();
 
             List<FieldError> result = new ArrayList<>();
-            for(org.springframework.validation.FieldError fieldError : fieldErrors) {
+            for (org.springframework.validation.FieldError fieldError : fieldErrors) {
                 result.add(new FieldError(
                         fieldError.getField(),
                         fieldError.getRejectedValue() == null ? "" : fieldError.getRejectedValue().toString(),
@@ -51,12 +57,6 @@ public class ErrorResponse {
                 ));
             }
             return result;
-        }
-
-        private FieldError(String field, String value, String reason) {
-            this.field = field;
-            this.value = value;
-            this.reason = reason;
         }
     }
 }

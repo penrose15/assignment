@@ -36,13 +36,6 @@ public class Users {
 
     private String role;
 
-    @PrePersist
-    public void generateId() {
-        if (this.id == null) {
-            this.id = UUID.randomUUID().toString(); // UUID로 랜덤 ID 생성
-        }
-    }
-
     @Builder
     public Users(String id, String email, String password, String username, LocalDateTime createdAt, String role) {
         this.id = id;
@@ -51,5 +44,12 @@ public class Users {
         this.username = username;
         this.createdAt = createdAt;
         this.role = role;
+    }
+
+    @PrePersist
+    public void generateId() {
+        if (this.id == null) {
+            this.id = UUID.randomUUID().toString(); // UUID로 랜덤 ID 생성
+        }
     }
 }

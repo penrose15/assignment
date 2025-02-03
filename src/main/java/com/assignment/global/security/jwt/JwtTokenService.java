@@ -1,18 +1,15 @@
 package com.assignment.global.security.jwt;
 
-import com.assignment.domain.users.repository.UsersRepository;
 import com.assignment.global.security.dto.UserInfo;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.annotations.CollectionId;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
 import java.util.Date;
-import java.util.Optional;
 
 @Slf4j
 @Service

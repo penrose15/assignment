@@ -21,7 +21,7 @@ public class ThreadsService {
 
     public void deleteByThreadId(Long threadId) {
         Threads thread = threadsRepository.findById(threadId)
-                        .orElseThrow(() -> new BusinessException(THREAD_NOT_FOUND));
+                .orElseThrow(() -> new BusinessException(THREAD_NOT_FOUND));
 
         chatRepository.deleteAllByThreadId(threadId);
         threadsRepository.deleteById(threadId);

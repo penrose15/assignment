@@ -25,14 +25,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
 public class ChatRepositoryTest {
+    private final int chatSize = 11;
     @Autowired
     private UsersRepository usersRepository;
     @Autowired
     private ThreadsRepository threadsRepository;
     @Autowired
     private ChatRepository chatRepository;
-
-    private final int chatSize = 11;
     private Users users;
 
     @Test

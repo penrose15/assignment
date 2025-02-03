@@ -18,7 +18,7 @@ public class MockChat {
 
     public static List<Chat> makeChats(Users users, Threads threads, int cnt) {
         List<Chat> chats = new ArrayList<>();
-        for(int i = 0; i<cnt; i++) {
+        for (int i = 0; i < cnt; i++) {
             chats.add(Chat.builder()
                     .users(users)
                     .threads(threads)

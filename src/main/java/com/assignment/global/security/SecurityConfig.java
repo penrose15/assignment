@@ -1,7 +1,6 @@
 package com.assignment.global.security;
 
 import com.assignment.global.security.jwt.JwtTokenService;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -38,7 +37,7 @@ public class SecurityConfig {
         http.authorizeHttpRequests(
                 authorize ->
                         authorize
-                                .requestMatchers("/user/login/**", "/user/sign-up/**")
+                                .requestMatchers("/user/login/**", "/user/sign-up/**", "/api.openai.com/v1/chat/completions")
                                 .permitAll()
                                 .anyRequest()
                                 .authenticated());

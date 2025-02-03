@@ -1,8 +1,7 @@
 package com.assignment.global.exception.errortype;
 
 public enum ThreadsErrorCode implements ErrorCode {
-    THREAD_NOT_FOUND(404, "T001", "thread not found")
-    ;
+    THREAD_NOT_FOUND(404, "T001", "thread not found");
 
     private final int status;
     private final String code;

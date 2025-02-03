@@ -1,10 +1,8 @@
 package com.assignment.domain.users.api;
 
 
-import com.assignment.domain.users.domain.Users;
 import com.assignment.domain.users.dto.CreateUserRequest;
 import com.assignment.domain.users.dto.LoginRequest;
-import com.assignment.domain.users.repository.UsersRepository;
 import com.assignment.domain.users.service.UsersService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;

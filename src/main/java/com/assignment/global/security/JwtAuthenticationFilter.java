@@ -22,22 +22,22 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        if(noAuthentication(request.getRequestURI())) {
+        if (noAuthentication(request.getRequestURI())) {
             filterChain.doFilter(request, response);
             return;
         }
         String token = request.getHeader("Authorization");
-        if(token == null || token.isEmpty()) {
+        if (token == null || token.isEmpty()) {
             throw new RuntimeException("jwt token not found");
         }
 
-        if(!token.startsWith("Bearer ")) {
+        if (!token.startsWith("Bearer ")) {
             throw new RuntimeException("jwt token is invalid");
         }
 
         token = token.substring(7);
         UserInfo userInfo = jwtTokenService.parseAccessToken(token);
-        if(userInfo != null) {
+        if (userInfo != null) {
             setAuthentication(userInfo);
         }
         filterChain.doFilter(request, response);
@@ -45,7 +45,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private boolean noAuthentication(String url) {
         return url.startsWith("/user/login")
-                || url.equals("/user/sign-up");
+                || url.startsWith("/user/sign-up")
+                || url.startsWith("/api.openai.com/v1/chat/completions");
     }
 
     private void setAuthentication(UserInfo userInfo) {

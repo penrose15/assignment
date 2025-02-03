@@ -32,18 +32,12 @@ public class Chat {
 
     private String question;
 
+    @Column(length = 10000)
     private String answer;
 
     @CreatedDate
     @Column(updatable = false)
     private LocalDateTime createdAt;
-
-    @PrePersist
-    public void generateId() {
-        if (this.id == null) {
-            this.id = UUID.randomUUID().toString(); // UUID로 랜덤 ID 생성
-        }
-    }
 
     @Builder
     public Chat(String id, Users users, Threads threads, String question, String answer, LocalDateTime createdAt) {
@@ -55,7 +49,20 @@ public class Chat {
         this.createdAt = createdAt;
     }
 
+    @PrePersist
+    public void generateId() {
+        if (this.id == null) {
+            this.id = UUID.randomUUID().toString(); // UUID로 랜덤 ID 생성
+        }
+    }
+
     public String getCreatedAtToString() {
         return this.createdAt.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+    }
+
+    public void updateAnswer(String answer) {
+        if(this.answer == null) {
+            this.answer = answer;
+        }
     }
 }
